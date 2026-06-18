@@ -22,6 +22,8 @@
     --script: 'Great Vibes', cursive;
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Nunito', sans-serif;
+    /* Logo codificado en Base64 para que funcione en Git sin depender de archivos locales */
+    --logo-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Ccircle cx='100' cy='100' r='90'/%3E%3C/clipPath%3E%3C/defs%3E%3Ccircle cx='100' cy='100' r='95' fill='%23EDE5DA'/%3E%3Ccircle cx='100' cy='100' r='90' fill='%23FFFFFF'/%3E%3Cg clip-path='url(%23c)'%3E%3Cpath d='M30 110 C 60 70, 140 70, 170 110 C 140 150, 60 150, 30 110 Z' fill='%23EBF4FB' opacity='0.5'/%3E%3Ctext x='100' y='105' font-family='Great Vibes, cursive' font-size='32' fill='%23C9A96E' text-anchor='middle'%3EMua%3C/text%3E%3Ctext x='100' y='132' font-family='Cormorant Garamond, serif' font-size='12' font-weight='bold' fill='%236B6B6B' text-anchor='middle' letter-spacing='2'%3ECREACIONES%3C/text%3E%3Cpath d='M100 62 C 95 55, 83 55, 83 65 C 83 75, 100 87, 100 87 C 100 87, 117 75, 117 65 C 117 55, 105 55, 100 62 Z' fill='%23B8D4E8'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   body {
@@ -30,27 +32,27 @@
     background-color: var(--cream);
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative; /* Permite posicionar el fondo respecto al body */
+    position: relative;
   }
 
-  /* Logo gigante traslúcido de fondo (Marca de agua) */
+  /* Logo gigante traslúcido de fondo (Marca de agua funcional en Git) */
   body::before {
     content: "";
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60vw;
-    height: 60vw;
-    max-width: 600px;
-    max-height: 600px;
-    background-image: url('assets/logo.jpeg');
+    width: 65vw;
+    height: 65vw;
+    max-width: 550px;
+    max-height: 550px;
+    background-image: var(--logo-url);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.04; /* Ajusta la transparencia aquí (más alto = más visible) */
+    opacity: 0.12; /* Ajustado para que se note perfectamente */
     pointer-events: none;
-    z-index: -1; /* Va por detrás de todo el contenido */
+    z-index: -1; 
   }
 
   /* --- HEADER & HERO --- */
@@ -60,12 +62,14 @@
     text-align: center;
     border-bottom: 1px solid var(--cream-dark);
   }
-  .header-logo-img {
-    max-width: 180px;
-    height: auto;
-    border-radius: 50%;
-    display: block;
+  .header-logo-box {
+    width: 160px;
+    height: 160px;
     margin: 0 auto;
+    background-image: var(--logo-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .hero {
@@ -77,6 +81,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
   }
   .hero-title {
     font-family: var(--serif);
@@ -113,6 +118,8 @@
     padding: 80px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
   .section-label {
     display: block;
@@ -139,7 +146,7 @@
     gap: 30px;
   }
   .value-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.9); /* Ligeramente traslúcido para ver el fondo */
     padding: 40px 30px;
     border-radius: 15px;
     text-align: center;
@@ -173,6 +180,7 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    z-index: 1;
   }
   .carousel-wrap {
     position: relative;
@@ -267,6 +275,7 @@
     border-radius: 20px;
     text-align: center;
     position: relative;
+    z-index: 1;
   }
   .testimonial-text {
     font-family: var(--serif);
@@ -289,12 +298,18 @@
     color: var(--cream);
     padding: 60px 20px 20px;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
-  .footer-logo-img {
-    max-width: 120px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 15px;
+  .footer-logo-box {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    background-image: var(--logo-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
   }
   .footer-text {
     font-size: 0.9rem;
@@ -330,7 +345,7 @@
 <body>
 
   <header>
-    <img src="assets/logo.jpeg" alt="Mua Creaciones" class="header-logo-img">
+    <div class="header-logo-box"></div>
   </header>
 
   <main>
@@ -397,7 +412,7 @@
   </main>
 
   <footer>
-    <img src="assets/logo.jpeg" alt="Mua Creaciones" class="footer-logo-img">
+    <div class="footer-logo-box"></div>
     <p class="footer-text">Llevando ternura e identidad a tus espacios y celebraciones especiales.</p>
     <div class="footer-socials">
       <a href="https://instagram.com" class="social-link" target="_blank">Instagram</a>
@@ -419,7 +434,6 @@
       let current = 0;
       let maxIndex = total - perView;
 
-      // Crear dots
       for (let i = 0; i <= maxIndex; i++) {
         const d = document.createElement('button');
         d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -444,7 +458,6 @@
         maxIndex = total - perView;
         current = Math.min(current, maxIndex);
         
-        // Re-crear dots en resize por si cambia el maxIndex
         dotsWrap.innerHTML = '';
         for (let i = 0; i <= maxIndex; i++) {
           const d = document.createElement('button');
@@ -456,7 +469,6 @@
         goTo(current);
       });
 
-      // Touch / swipe para celulares
       let startX = 0;
       let dist = 0;
       track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dist = 0; }, {passive: true});
