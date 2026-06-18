@@ -39,19 +39,12 @@
     text-align: center;
     border-bottom: 1px solid var(--cream-dark);
   }
-  .logo-text {
-    font-family: var(--script);
-    font-size: 3rem;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .logo-sub {
-    font-family: var(--serif);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.85rem;
-    color: var(--text-mid);
-    margin-top: 5px;
+  .header-logo-img {
+    max-width: 180px; /* Tamaño del logo en la cabecera */
+    height: auto;
+    border-radius: 50%; /* Mantiene el logo circular */
+    display: block;
+    margin: 0 auto;
   }
 
   .hero {
@@ -276,11 +269,11 @@
     padding: 60px 20px 20px;
     text-align: center;
   }
-  .footer-logo {
-    font-family: var(--script);
-    font-size: 2.5rem;
-    color: var(--gold-light);
-    margin-bottom: 10px;
+  .footer-logo-img {
+    max-width: 120px; /* Tamaño del logo en el footer */
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
   }
   .footer-text {
     font-size: 0.9rem;
@@ -316,8 +309,7 @@
 <body>
 
   <header>
-    <div class="logo-text">Mua Creaciones</div>
-    <div class="logo-sub">Hecho a mano con amor</div>
+    <img src="assets/logo.jpg" alt="Mua Creaciones" class="header-logo-img">
   </header>
 
   <main>
@@ -384,7 +376,7 @@
   </main>
 
   <footer>
-    <div class="footer-logo">Mua Creaciones</div>
+    <img src="assets/logo.jpg" alt="Mua Creaciones" class="footer-logo-img">
     <p class="footer-text">Llevando ternura e identidad a tus espacios y celebraciones especiales.</p>
     <div class="footer-socials">
       <a href="https://instagram.com" class="social-link" target="_blank">Instagram</a>
